@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=0.7">
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-  <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.1.0/dist/algoliasearch-lite.umd.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.3.1/dist/instantsearch.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.50.1/dist/instantsearch.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.14.3/dist/algoliasearch.umd.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.1.1/themes/reset-min.css">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,700&amp;display=swap">
@@ -27,6 +27,7 @@
       <div class="facet" id="facet-weight" tabindex="0"></div>
       <div class="facet" id="facet-categories" tabindex="0"></div>
       <div class="facet" id="facet-mechanics" tabindex="0"></div>
+      <div class="facet" id="facet-age-filter" tabindex="0"></div>
       <div class="facet" id="facet-min-age" tabindex="0"></div>
       <div class="facet" id="facet-previous-players" tabindex="0"></div>
       <div class="facet" id="facet-numplays" tabindex="0"></div>
@@ -83,7 +84,7 @@
             </dd>
           </div>
           <div>
-            <dt>Min age</dt>
+            <dt>Min Age</dt>
             <dd>{{ min_age }}</dd>
           </div>
           {{# has_expansions }}

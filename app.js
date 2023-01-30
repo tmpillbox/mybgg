@@ -180,29 +180,93 @@ function get_widgets(SETTINGS) {
         sortBy: function(a, b){ return PLAYING_TIME_ORDER.indexOf(a.name) - PLAYING_TIME_ORDER.indexOf(b.name); },
       }
     ),
-    "refine_min_age": panel('Min age')(instantsearch.widgets.numericMenu)(
+    //"refine_age_slider": panel('Age Slider',
+    //  {
+    //    hidden(options) {
+    //      return !options.canRefine;
+    //    },
+    //  }
+    //)(instantsearch.widgets.rangeSlider)(
+    //  {
+    //    container: '#facet-age-slider',
+    //    attribute: 'min_age',
+    //    pips: false,
+    //    min: 0,
+    //    max: 21,
+    //  }
+    //),
+    //"refine_age_filter": panel('Age Filter',
+    //  {
+    //    hidden(options) {
+    //      return !options.canRefine;
+    //    },
+    //  }
+    //)(instantsearch.widgets.rangeInput)(
+    //  {
+    //    container: '#facet-age-filter',
+    //    attribute: 'min_age',
+    //  }
+    //),
+    //"refine_age_filter": panel('Minimum Age')(instantsearch.widgets.dynamicWidgets)(
+    //  {
+    //    container: "#facet-age-filter",
+    //    widgets: [
+    //      (container) => 
+    //        instantsearch.widgets.rangeInput(
+    //          {
+    //            hidden: false,
+    //            container,
+    //            attribute: 'min_age',
+    //          }
+    //        ),
+    //      (container) =>
+    //          instantsearch.widgets.rangeSlider(
+    //          {
+    //            hidden: false,
+    //            container,
+    //            attribute: 'min_age',
+    //            pips: false,
+    //            min: 0,
+    //            max: 21,   
+    //          }
+    //        ),
+    //    ],
+    //    fallbackWidget: ({ container, attribute }) =>
+    //      instantsearch.widgets.panel( { templates: { header: attribute } } )(
+    //        instantsearch.widgets.menu
+    //      )( { container, attribute } )
+    //  }
+    //),
+    //"refine_min_age": panel('Min age')(instantsearch.widgets.numericMenu)(
+    //  {
+    //    container: '#facet-min-age',
+    //    attribute: 'min_age',
+    //    items: [
+    //      { label: 'Any age' },
+    //      { label: '<= 1 year', end: 1 },
+    //      { label: '<= 2 years', end: 2 },
+    //      { label: '<= 3 years', end: 3 },
+    //      { label: '<= 4 years', end: 4 },
+    //      { label: '<= 5 years', end: 5 },
+    //      { label: '<= 6 years', end: 6 },
+    //      { label: '<= 7 years', end: 7 },
+    //      { label: '<= 8 years', end: 8 },
+    //      { label: '<= 9 years', end: 9 },
+    //      { label: '<= 10 years', end: 10 },
+    //      { label: '<= 11 years', end: 11 },
+    //      { label: '<= 12 years', end: 12 },
+    //      { label: '<= 13 years', end: 13 },
+    //      { label: '<= 14 years', end: 14 },
+    //      { label: '<= 15 years', end: 15 },
+    //      { label: '15+', start: 15 },
+    //    ]
+    //  }
+    //),
+    "refine_min_age": panel('Minimum Age')(instantsearch.widgets.rangeSlider)(
       {
         container: '#facet-min-age',
         attribute: 'min_age',
-        items: [
-          { label: 'Any age' },
-          { label: '<= 1 year', end: 1 },
-          { label: '<= 2 years', end: 2 },
-          { label: '<= 3 years', end: 3 },
-          { label: '<= 4 years', end: 4 },
-          { label: '<= 5 years', end: 5 },
-          { label: '<= 6 years', end: 6 },
-          { label: '<= 7 years', end: 7 },
-          { label: '<= 8 years', end: 8 },
-          { label: '<= 9 years', end: 9 },
-          { label: '<= 10 years', end: 10 },
-          { label: '<= 11 years', end: 11 },
-          { label: '<= 12 years', end: 12 },
-          { label: '<= 13 years', end: 13 },
-          { label: '<= 14 years', end: 14 },
-          { label: '<= 15 years', end: 15 },
-          { label: '15+', start: 15 },
-        ]
+        pips: false,
       }
     ),
     "refine_previousplayers": panel('Previous players')(instantsearch.widgets.refinementList)(
@@ -274,8 +338,8 @@ function get_widgets(SETTINGS) {
     "pagination": instantsearch.widgets.pagination({
       container: '#pagination',
       maxPages: 20,
-      showFirst: false,
-      showLast: false
+      showFirst: true,
+      showLast: true
     })
   }
 }
@@ -342,6 +406,7 @@ function init(SETTINGS) {
     widgets["refine_players"],
     widgets["refine_weight"],
     widgets["refine_playingtime"],
+    //widgets["refine_age_filter"],
     widgets["refine_min_age"],
     widgets["hits"],
     widgets["stats"],
@@ -349,6 +414,10 @@ function init(SETTINGS) {
     widgets["refine_previousplayers"],
     widgets["refine_numplays"]
   ]);
+
+  //  widgets["refine_age_slider"],
+  //  widgets["refine_age_filter"],
+
 
   search.start();
 
